@@ -1,0 +1,13 @@
+package com.bookregistration.book.registration;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class BookRegistrationApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
