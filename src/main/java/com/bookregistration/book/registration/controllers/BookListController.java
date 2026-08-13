@@ -2,6 +2,7 @@ package com.bookregistration.book.registration.controllers;
 
 import com.bookregistration.book.registration.entity.Books;
 import com.bookregistration.book.registration.repository.BookListRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +31,10 @@ public class BookListController {
 
     //Get book by id (Read)
     @GetMapping("/{id}")
-    public Books getBooksId(@PathVariable Integer id){
-        return bookListRepository.findById((long) id).orElse(null);
+    public ResponseEntity<Books> getBooksId(@PathVariable Integer id){
+        return bookListRepository.findById((long) id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     //Update book by id (Update)
